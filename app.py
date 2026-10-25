@@ -853,6 +853,10 @@ def go(page):
 
 
 def goto_q(i):
+    if i is None:
+        return
+
+    i = int(i)
     st.session_state.current = max(0, min(N - 1, i))
 
 
