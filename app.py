@@ -856,7 +856,16 @@ def goto_q(i):
     if i is None:
         return
 
-    i = int(i)
+    if isinstance(i, str):
+        import re
+        match = re.search(r"Q(\d+)", i)
+        if match:
+            i = int(match.group(1)) - 1
+        else:
+            return
+    else:
+        i = int(i)
+
     st.session_state.current = max(0, min(N - 1, i))
 
 
